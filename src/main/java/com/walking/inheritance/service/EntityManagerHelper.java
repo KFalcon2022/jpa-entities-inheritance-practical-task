@@ -24,7 +24,7 @@ public class EntityManagerHelper {
     }
 
     public <T> T runTransactional(Function<EntityManager, T> task) {
-        try (var em = entityManagerFactory.createEntityManager()) {
+        try (var em = getEntityManager()) {
             try {
                 var transaction = em.getTransaction();
                 transaction.begin();
