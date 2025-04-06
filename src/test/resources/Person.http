@@ -1,0 +1,144 @@
+### Создать взрослого мужчину
+POST http://localhost:8080/family-service/person
+Content-Type: application/json
+
+{
+  "category": "ADULT",
+  "firstName": "Ivan",
+  "lastName": "Ivanov",
+  "birthDate": "1995-02-02",
+  "gender": "MALE",
+  "address": "Minsk",
+  "monthlyIncome": 1000.0,
+  "job": "IT Company"
+}
+
+### Создать персону неудачно
+POST http://localhost:8080/family-service/person
+Content-Type: application/json
+
+{
+  "category": "ADULT",
+  "firstName": null,
+  "lastName": "Ivanov",
+  "birthDate": "1995-02-02",
+  "gender": "MALE",
+  "address": "Minsk",
+  "monthlyIncome": 1000.0,
+  "job": "IT Company"
+}
+
+### Создать взрослого мужчину
+POST http://localhost:8080/family-service/person
+Content-Type: application/json
+
+{
+  "category": "ADULT",
+  "firstName": "Petr",
+  "lastName": "Petrov",
+  "birthDate": "1995-02-02",
+  "gender": "MALE",
+  "address": "Minsk",
+  "monthlyIncome": 0
+}
+
+### Создать взрослую женщину
+POST http://localhost:8080/family-service/person
+Content-Type: application/json
+
+{
+  "category": "ADULT",
+  "firstName": "Anna",
+  "lastName": "Ivanova",
+  "birthDate": "1995-02-02",
+  "gender": "FEMALE",
+  "address": "Minsk",
+  "monthlyIncome": 1000.0,
+  "job": "IT Company"
+}
+
+### Создать ребенка. Id здесь и дальше заполнены, но при самостоятельном запуске
+### требуется подстановка исходя из выполнения предыдущих запросов
+POST http://localhost:8080/family-service/person
+Content-Type: application/json
+
+{
+  "category": "CHILD",
+  "firstName": "Semen",
+  "lastName": "Ivanov",
+  "birthDate": "2002-02-02",
+  "gender": "MALE",
+  "address": "Minsk",
+  "motherId": "76d659d7-90d8-455b-a608-34c6608151ad",
+  "fatherId": "508957ab-c67e-40c8-9371-330d4d25847d"
+}
+
+### Создать ребенка
+POST http://localhost:8080/family-service/person
+Content-Type: application/json
+
+{
+  "category": "CHILD",
+  "firstName": "Maria",
+  "lastName": "Petrova",
+  "birthDate": "2023-02-02",
+  "gender": "FEMALE",
+  "address": "Minsk",
+  "motherId": "76d659d7-90d8-455b-a608-34c6608151ad",
+  "fatherId": "fe071e3c-ce7f-494d-8e4c-2a6f3c0e50d1"
+}
+
+### Обновить взрослого
+PUT http://localhost:8080/family-service/person
+Content-Type: application/json
+
+{
+  "id": "508957ab-c67e-40c8-9371-330d4d25847d",
+  "firstName": "Ivan",
+  "lastName": "Ivanov",
+  "address": "Erevan",
+  "monthlyIncome": 100000.0,
+  "job": "IT Company"
+}
+
+### Обновить неудачно (id ребенка)
+PUT http://localhost:8080/family-service/person
+Content-Type: application/json
+
+{
+  "id": "d65f01fa-786a-49c4-9851-85ae3adfaa05",
+  "firstName": "Ivan",
+  "lastName": "Ivanov",
+  "address": "Minsk",
+  "monthlyIncome": 1000.0,
+  "job": "IT Company"
+}
+
+### Получить семью по матери
+GET http://localhost:8080/family-service/family?personId=76d659d7-90d8-455b-a608-34c6608151ad
+
+### Получить семью по отцу
+GET http://localhost:8080/family-service/family?personId=508957ab-c67e-40c8-9371-330d4d25847d
+
+### Получить семью по ребенку
+GET http://localhost:8080/family-service/family?personId=d65f01fa-786a-49c4-9851-85ae3adfaa05
+
+### Получить всех
+GET http://localhost:8080/family-service/person/all
+
+### Получить всех взрослых
+GET http://localhost:8080/family-service/person/all?category=ADULT
+
+### Получить всех детей
+GET http://localhost:8080/family-service/person/all?category=CHILD
+
+### Получить по id
+GET http://localhost:8080/family-service/person?id=508957ab-c67e-40c8-9371-330d4d25847d
+
+### Получить по несуществующему id
+GET http://localhost:8080/family-service/person?id=00000000-0000-0000-0000-000000000000
+
+
+
+
+
